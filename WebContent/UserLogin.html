@@ -29,5 +29,21 @@
 
 	</form>
 	<br />
+<script>
+    function containsCRLF(input) {
+        return /(\r|\n)/.test(input);
+    }
+
+    document.querySelector('form[action="userlogin"]').addEventListener('submit', function(e) {
+        var uname = document.querySelector('input[name="uname"]').value;
+        var pword = document.querySelector('input[name="pword"]').value;
+
+        if (containsCRLF(uname) || containsCRLF(pword)) {
+            e.preventDefault(); // prevent form submission
+            alert('Invalid input! Inputs should not contain line breaks or special characters.');
+        }
+    });
+</script>
+
 </body>
 </html>
